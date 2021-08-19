@@ -126,6 +126,36 @@ ul li{
     color: #fff;
 }
 
+.home-newsletter .btn:hover{
+    color:rgb(255, 153, 4);
+}
+
+.home-newsletter .form-control:focus{
+    box-shadow: none;
+}
+
 .qualities-img{
     width:200px;
+}
+
+/*Mapa e contacte-nos*/
+
+.section-title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+:root{
+    --enviar: rgb(255, 153, 4);
+}
+
+.form-group .enviar{
+    background-color: var(--enviar);
+}
+
+.form-group .form-control:focus{
+    box-shadow: none;
+}
+
+.form-group .enviar:focus{
+    box-shadow: none;
 }
