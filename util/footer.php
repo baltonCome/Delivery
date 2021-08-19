@@ -1,7 +1,7 @@
     
 
 
-    <footer class=" bg-warning ">
+    <footer class=" bg-warning">
       <div class="row justify-items-between text-center">
         <div class = "col align-self-center">
           <h6>Localização</h6>

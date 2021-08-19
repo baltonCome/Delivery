@@ -1,0 +1,15 @@
+{
+    "name": "mrsavagery/delivery",
+    "autoload": {
+        "psr-4": {
+            "Mrsavagery\\Delivery\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "baltonCome",
+            "email": "baltoncome@outlook.com"
+        }
+    ],
+    "require": {}
+}

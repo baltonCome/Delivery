@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +55,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="#">Saiba Mais</a>
+                                <a class="nav-link ms-5" href="learn_more.php">Saiba Mais</a>
                             </li>
 
                         </ul>
