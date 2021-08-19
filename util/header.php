@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="util/css/style.css">
     <link rel="stylesheet" href="util/css/bootstrap.css">
     <link rel="stylesheet" href="util/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
     <!--<link rel="stylesheet" href="util/css/bootstrap.rtl.css">
     <link rel="stylesheet" href="util/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="util/css/bootstrap-grid.css">
@@ -36,23 +38,23 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="index.php">Início</a>
+                                <a class="nav-link ms-5" href="index.php"><i class="bi bi-house-door-fill"></i>Início</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="order.php">Fazer pedidos</a>
+                                <a class="nav-link ms-5" href="order.php"><i class="bi bi-cart-plus-fill"></i>Fazer pedidos</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="zone.php">Area de cobertura</a>
+                                <a class="nav-link ms-5" href="zone.php"><i class="bi bi-geo-alt"></i>Area de cobertura</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="#">Depoimentos</a>
+                                <a class="nav-link ms-5" href="#"><i class="bi bi-chat-quote-fill"></i>Depoimentos</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="#">Saiba Mais</a>
+                                <a class="nav-link ms-5" href="learn_more.php"><i class="bi bi-three-dots-vertical"></i>Saiba Mais</a>
                             </li>
 
                         </ul>
