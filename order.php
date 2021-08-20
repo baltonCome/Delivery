@@ -1,33 +1,60 @@
 <?php
 
+session_start();
+
 include __DIR__.'/util/header.php';
 require_once __DIR__.'/util/item.php';
+require_once __DIR__.'/src/Database.php';
+
+use Src\Database;
+
+$database = new Database();
 
 if(isset($_POST['add'])){
-    $cart = 'Produto: Bolo 1 andar';
-    $pric = '3000Mts';
-}
 
+    if(isset($_SESSION['cart'])){
+
+        $id_items_array = array_column($_SESSION['cart'], "item_id");
+        print_r($id_items_array);
+        if(in_array($_POST['item_id'], $id_items_array)){
+
+            echo '<div class="alert alert-danger" role="alert"> Producto Já adicionado!</div>';
+            header('location: order.php?status = error');
+        }else{
+
+            $count = count($_SESSION['cart']);
+            $array_items = array('item_id' => $_POST['item_id']);
+            $_SESSION['cart'][$count] = $array_items;
+        }
+    }else{
+
+        $array_items = array('item_id' => $_POST['item_id']);
+        $_SESSION['cart'][0] = $array_items;
+    }
+    
+}
 
 ?>
     <main>
         <div class="row my-2">
             <div class="col-2">
                 <div class="navbar-nav flex-column position-fixed">
-                    <ul>
+                    <form action="" method="post">
+                        <ul>
                         <li class= "outline">
-                            <a class="nav-link btn">Bolos</a>        
+                            <a type="submit" class="nav-link btn btn-warning my-2">Bolos</a>        
                         </li>
                         <li>
-                            <a class="nav-link btn" >Doces</a>
+                            <a type="submit" class="nav-link btn btn-warning my-2" >Doces</a>
                         </li>
                         <li>
-                            <a class="nav-link btn" >Salgados</a>
+                            <a type="submit" class="nav-link btn btn-warning my-2" >Salgados</a>
                         </li>
                         <li>
-                            <a class="nav-link btn" >Sobremesas</a>
+                            <a type="submit" class="nav-link btn btn-warning my-2" >Sobremesas</a>
                         </li>
                     </ul>
+                    </form>
                 </div>
             </div>
             <div class="col-7">
@@ -37,179 +64,27 @@ if(isset($_POST['add'])){
                 <div>
                     <h3 class="text-center my-3">Itens em Destaque</h3>
                     <div class="row row-cols-1 row-cols-md-2">
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="util/imgs/1Andar 3k (4).jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Bolo 1 Andar</p>
-                                <p class="card-text">Preco: 3 000MTs</p>
-                                <input type="hidden" name="price" value="3000">
-                                <input type="hidden" name="prod" value="Bolo 1 Andar">
-                                <button class="btn btn-success" type="submit" name="add" value="_add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="util/imgs/24cm x2 1.9k (4).jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Cupcake 12</p>
-                                <p class="card-text">Preco: 1000MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="util/imgs/brand.png" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Mini Pizza</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="util/imgs/16cm 0.8k (3).jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Pudim, médio</p>
-                                <p class="card-text">Preco: 600Mts</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-center my-3">Bolos</h3>
-                    <div class="row row-cols-2 row-cols-md-3">
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="util/imgs/14cm 0.7k 2.0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Bolo 14cm</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Cupcake 12</p>
-                                <p class="card-text">Preco: 1000MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Mini Pizza</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Pudim, médio</p>
-                                <p class="card-text">Preco: 600Mts</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Mini Pizza</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Pudim, médio</p>
-                                <p class="card-text">Preco: 600Mts</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Bolo 26cm X2</p>
-                                <p class="card-text">Preco: 2 200MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Cupcake 12</p>
-                                <p class="card-text">Preco: 1000MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Mini Pizza</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Pudim, médio</p>
-                                <p class="card-text">Preco: 600Mts</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Mini Pizza</p>
-                                <p class="card-text">Preco: 700MTs</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card shadow h-100">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-title h5">Pudim, médio</p>
-                                <p class="card-text">Preco: 600Mts</p>
-                                <button class="btn btn-success" type="submit" name="add">Adicionar</button>
-                            </div>
-                            </div>
-                        </div>
+                        <?php
+                        $items = $database->getRows('items',array('order_by'=>'image ASC'));
+                        foreach($items as $item){
+                            product($item['item'], $item['price'],$item['image'], $item['id']);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="col-3 position-sticky">
                 <h3> <img src="util/icons/cart.png" alt=""> Carrinho</h3>
-                <p><?php $cart ?> <br> <?php $pric ?></p>
+                <a class= "btn btn-warning" href="cart.php">
+                <?php
+                    if(isset($_SESSION['cart'])){
+                        $count = count($_SESSION['cart']);
+                        echo '<p> Processar Pedido ' .$count.'</p>';
+                    }else{
+                        echo 0;
+                    }
+                ?>                      
+                </a>
             </div>
         </div>
     </main>

@@ -51,10 +51,6 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ms-5" href="#">Depoimentos</a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link ms-5" href="learn_more.php">Saiba Mais</a>
                             </li>
 
